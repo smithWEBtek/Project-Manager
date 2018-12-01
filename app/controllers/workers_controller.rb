@@ -1,10 +1,16 @@
 class WorkersController < ApplicationController
   before_action :require_login
 
-  def index
-    @workers = Worker.all
+	def index
+		
+		# if params[:company_id]
+		# 	@workers = Company.find(id: params[:company_id]).workers 
+		# else
+		@workers = Worker.all
+		
     respond_to do |format|
-      format.json {render :json => @workers}
+      format.html { render :index }
+      format.json {render json: @workers}
     end
   end
 

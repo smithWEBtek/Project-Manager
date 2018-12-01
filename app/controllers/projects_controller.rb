@@ -25,10 +25,15 @@ class ProjectsController < ApplicationController
 
   def show
     @project = Project.find(params[:id])
-    @worker = Worker.new
+    # @worker = Worker.new
     @projects = Project.all
     # render :json @project.to_json
-    #need to change to serializer
+		#need to change to serializer
+		respond_to do |format|
+      format.html { render :index }
+      format.json {render json: @project}
+    end
+		
   end
 
   def edit
